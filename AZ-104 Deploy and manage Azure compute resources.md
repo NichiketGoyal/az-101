@@ -41,3 +41,62 @@ Virtual Machine has 3 disks attached to itself. Operating System Disk, Temporary
 - **Azure Bastion** service is a fully platform-managed PaaS service. Azure Bastion provides secure and seamless RDP/SSH connectivity to your virtual machines directly over SSL
 
 
+# 2. Configure Virtual Machines Availability
+
+### Availability Sets
+An availability set is a logical feature you can use to ensure a group of related virtual machines are deployed together.
+#### Characteristics:
+- All virtual machines in an availability set should perform the identical set of functionalities.
+- All virtual machines in an availability set should have the same software installed.
+- All VM's run across multiple physical servers, compute racks, storage units, and network switches.
+- A virtual machine can only be added to an availability set when the virtual machine is created.
+#### Why to use Availability Sets
+- To achieve redundancy in your configuration
+- Each application tier exercised in your configuration should be located in a separate availability set. The separation helps to mitigate single point of failure on all machines.
+- For high availability and network performance, create a load-balanced availability set by using Azure Load Balancer.
+- You can use Azure managed disks with your Azure virtual machines in availability sets for block-level storage.
+
+### Update Domain
+- An update domain is a group of nodes that are upgraded together during the process of a service upgrade (or rollout).
+- During planned maintenance, only one update domain is rebooted at a time.
+- By default, there are five (non-user-configurable) update domains. You can configure upto 20
+
+### Fault Domain
+- A fault domain is a group of nodes that represent a physical unit of failure.
+- Two fault domains work together to mitigate against hardware failures, network outages, power interruptions, or software updates.
+
+<img width="581" alt="Screenshot 2023-01-02 at 6 44 26 PM" src="https://user-images.githubusercontent.com/47356500/210236264-30caf604-9ae7-441d-bf8f-682077e8ed2f.png">
+
+
+### Availability Zones
+- Availability zones are a high-availability offering that protects your applications and data from datacenter failures.
+- Combination of a fault domain and an update domain makes an availability zone.
+- These are equipped with independent power, cooling, and networking.
+- To ensure resiliency, there's a minimum of three separate zones in all enabled regions.
+- The physical separation of availability zones within a region protects applications and data from datacenter failures.
+
+### Vertical Scaling
+It involves increasing or decreasing the virtual machine size in response to a workload. Vertical scaling makes a virtual machine more (scale up) or less (scale down) powerful.
+
+### Horizontal Scaling
+It is used to adjust the number of virtual machines in your configuration to support the changing workload.
+
+####Things to consider Using Vertical and Horizontal Scaling:
+- **Horizontal scaling has fewer limitations than vertical scaling**: 
+  - Vertical scaling also usually requires a virtual machine to stop and restart
+  - A vertical scaling implementation depends on the availability of larger hardware
+- When operating in the cloud, horizontal scaling is more flexible
+
+### Azure Virtual Machine Scale Sets
+- Azure Virtual Machine Scale Sets are an Azure Compute resource that you can use to deploy and manage a set of identical virtual machines.
+- It is used to gain true **Auto-Scaling**
+- All virtual machine instances are created from the same base operating system image and configuration.
+- You can use Virtual Machine Scale Sets to run multiple instances of your application.
+- Virtual Machine Scale Sets support up to 1,000 virtual machine instances.
+
+#### Things to consider
+- create autoscaling rules to define the acceptable performance
+- If the increased load is consistent, rather than a brief demand, you can configure autoscale rules to increase or decrease the number of virtual machine instances in your implementation.
+- schedule events to automatically increase or decrease the capacity of your implementation
+- reduces your management overhead to monitor and optimize the performance
+

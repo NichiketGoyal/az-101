@@ -100,3 +100,73 @@ It is used to adjust the number of virtual machines in your configuration to sup
 - schedule events to automatically increase or decrease the capacity of your implementation
 - reduces your management overhead to monitor and optimize the performance
 
+
+# 3. Configure Virtual Machines Extensions
+
+### Virtual Machines Extensions
+Azure virtual machine extensions are small applications that provide post-deployment configuration and automation tasks for Azure Virtual Machines.
+Example software installation or anti-virus protection, or when a machine needs to run a configuration script.
+
+#### Characteristics:
+- Can be managed via Azure CLI, PowerShell, Azure Resource Manager (ARM) templates, and the Azure portal.
+- can be bundled with a new virtual machine deployment or run against any existing system.
+- can choose from a large set of first and third-party virtual machine extensions.
+
+#### Ways to Implement:
+- can be a subset of a larger deployment for your virtual machines.
+- can be used as configuration applications to assist with provisioning your virtual machines.
+- can be run against any supported extension operated systems after deployment.
+
+### Custom Script Extensions
+- used to automatically launch and execute virtual machine customization tasks after initial machine configuration.
+- After the Custom Script Extensions resource is created for your virtual machine, you provide a PowerShell script file with the commands to execute on the machine.
+- Scripts can be downloaded from Azure Storage or GitHub, or provided to the Azure portal at extension run time.
+- Timeout time is 90 mins
+
+### Desired State Configuration
+Desired State Configuration is a management platform in Windows PowerShell. Desired State Configuration enables deploying and managing configuration data for software services and managing the environment in which these services run.
+- Desired State Configuration centers around creating specific configurations by using scripts.
+
+
+# 4. Configure Azure app service plans
+
+### Things to know:
+- An App Service plan defines a set of compute resources for a web application to run.
+- Each App Service plan defines three settings:
+  - Region: The region for the App Service plan, such as West US, Central India, North Europe, and so on.
+  - Number of VM instances: The number of virtual machine instances to allocate for the plan.
+  - Size of VM instances: The size of the virtual machine instances in the plan, including Small, Medium, or Large.
+- You can add new apps to existing plan.
+
+### How applications run and scale in App Service plans
+The Azure App Service plan is the scale unit of App Service applications. 
+- Free or Shared tier:
+  - Applications run by receiving CPU minutes on a shared virtual machine instance.
+  - Applications can't scale out.
+- Basic, Standard, Premium, or Isolated tier:
+  - Applications run on all virtual machine instances configured in the App Service plan.
+  - Multiple applications in the same plan share the same virtual machine instances.
+  - If you have multiple deployment slots for an application, all deployment slots run on the same virtual machine instances.
+  - If you enable diagnostic logs, perform backups, or run WebJobs, these tasks use CPU cycles and memory on the same virtual machine instances.
+
+### Things to consider
+- **cost savings** as you pay for the computing resources that your App Service plan allocates.
+- **multiple applications in one plan** a single plan to support multiple applications, to make it easier to configure and maintain shared virtual machine instances.
+- **plan capacity** determine the resource requirements for the new application and identify the remaining capacity of your plan.
+- **application isolation** need to scale the application independently from the other applications in the existing plan, or in a different region or app is resource-intensive. 
+
+### Pricing
+<img width="915" alt="Screenshot 2023-01-03 at 2 31 37 PM" src="https://user-images.githubusercontent.com/47356500/210326658-6c348cdd-085d-4423-ad5e-bc95882a1f0c.png">
+
+### Azure App Service scaling
+- Both horizontal and vertical scaling is available.
+- You can scale out to as many as 30 instances, depending on your App Service plan pricing tier
+- Changing your scale settings, you don't need to change your code or redeploy your applications.
+- autoscale to support users and reduce costs
+
+### Azure App Service auto-scaling
+- need to specify the minimum, and maximum number of instances to run
+- An autoscale setting is read by the autoscale engine to determine whether to scale out or in.
+- Autoscale trigger can be metric-based or time-based
+- The autoscale engine uses notification settings.
+

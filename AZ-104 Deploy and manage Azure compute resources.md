@@ -170,3 +170,79 @@ The Azure App Service plan is the scale unit of App Service applications.
 - Autoscale trigger can be metric-based or time-based
 - The autoscale engine uses notification settings.
 
+# 5. Configure Azure app service
+
+Azure App Service brings together everything you need to create websites, mobile backends, and web APIs for any platform or device.
+
+### Benefits
+- Multiple languages and frameworks
+- DevOps optimization
+- Global scale with high availability
+- Connections to SaaS platforms and on-premises data
+- Security and compliance
+- Application templates
+- Visual Studio integration
+- API and mobile features
+- Serverless code
+
+### app security with App Service
+- Azure App Service provides built-in authentication and authorization support
+- The authentication and authorization security module in Azure App Service runs in the same environment as your application code, yet separately.
+- No SDKs, specific languages, or changes to your application code are required.
+- every incoming HTTP request passes through the module before it's handled by your application code.
+- security module handles several tasks for your app:
+  - Authenticate users with the specified provider
+  - Validate, store, and refresh tokens
+  - Manage the authenticated session
+  - Inject identity information into request headers
+
+### Continuous Integration And Deployment
+Azure portal provides out-of-the-box continuous integration and deployment with Azure DevOps, GitHub, Bitbucket, FTP, or a local Git repository
+
+<img width="578" alt="Screenshot 2023-01-03 at 11 21 22 PM" src="https://user-images.githubusercontent.com/47356500/210413218-3a89197b-f9eb-49e6-884b-dbdc48ff235f.png">
+
+### Custom Domain Names
+Azure assigns the app to a subdomain of azurewebsites.net.  Suppose your web app is named contoso. Azure creates a URL for your web app as contoso.azurewebsites.net
+### To create custom domain name of app:
+- Reserve your domain name.
+- Create DNS records to map the domain to your Azure web app. 
+- Enable the custom domain.
+
+### Azure Application Insights
+Azure Application Insights lets you monitor your live applications.
+#### Characteristics
+- works on various platforms including .NET, Node.js and Java EE.
+- Can be used for any kind of environment
+- You can monitor and analyze data from mobile apps by integrating with Visual Studio App Center.
+
+<img width="689" alt="Screenshot 2023-01-03 at 11 44 27 PM" src="https://user-images.githubusercontent.com/47356500/210416779-c9d43419-6b33-48d0-80b4-d135634e0240.png">
+
+
+# 6. Configure Azure Container Instances 
+
+### containers to virtual machines
+- Container-based virtualization allows you to virtualize the operating system.
+- This approach lets you run multiple applications within the same instance of an operating system, while maintaining isolation between the applications
+- Increases flexibility and speed when developing and sharing your containerized application code.
+- Gain streamlined and accelerated deployment of your apps.
+- Support higher workload density and improve your resource utilization by working with containers.
+
+<img width="360" alt="Screenshot 2023-01-03 at 11 55 01 PM" src="https://user-images.githubusercontent.com/47356500/210425250-876b2a20-c419-4121-9b33-23014f24f256.png">
+
+### Things about Azure Container Instances:
+- Fast startup times.
+- Containers can be directly exposed to the internet with an IP address and FQDN
+- Container applications are as isolated in a container
+-  Container nodes can be scaled dynamically to match actual resource demands
+-  Containers support direct mounting of Azure Files file shares
+-  Container Instances can schedule both Windows and Linux containers.
+-  Container Instances can be deployed into an Azure virtual network.
+
+### container groups
+A container group is a collection of containers that get scheduled on the same host machine.
+#### Characteristics
+- The container group is scheduled on a single host machine, and is assigned a DNS name label.
+- The container group exposes a single public IP address with one exposed port.
+- One container in the group listens on port 80. The other container listens on port 1433.
+- The group includes two Azure Files file shares as volume mounts. Each container in the group mounts one of the file shares locally.
+<img width="765" alt="Screenshot 2023-01-04 at 12 48 30 AM" src="https://user-images.githubusercontent.com/47356500/210426267-a509eda5-a0a9-4d04-af54-35ef5c225433.png">
